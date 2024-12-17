@@ -2825,6 +2825,20 @@ doc = ["sphinx", "sphinx_rtd_theme"]
 test = ["pytest", "ruff"]
 
 [[package]]
+name = "tkcalendar"
+version = "1.6.1"
+description = "Calendar and DateEntry widgets for Tkinter"
+optional = false
+python-versions = "*"
+files = [
+    {file = "tkcalendar-1.6.1-py3-none-any.whl", hash = "sha256:9d3a80816a7b32d64fab696fa3d2a007fb23c87953267d5e343a38ff4cd7c15c"},
+    {file = "tkcalendar-1.6.1.tar.gz", hash = "sha256:5edf958c0a59429e90309e9b805b2e229192bbcab952460247204d7030eea5cf"},
+]
+
+[package.dependencies]
+babel = "*"
+
+[[package]]
 name = "tornado"
 version = "6.4.2"
 description = "Tornado is a Python web framework and asynchronous networking library, originally developed at FriendFeed."
@@ -2986,4 +3000,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "1378e6cacdd677d387b00753961da0daf306b0ccab09ca0eb048a0aee004eb5b"
+content-hash = "49c6275866a26683f3d1fc077f44805d77b9aed469b50f331f83b73b6c1662d5"
