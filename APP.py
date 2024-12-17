@@ -1,25 +1,29 @@
 import tkinter as tk
+from tkinter import ttk
 from tkcalendar import DateEntry
-from src.Backend import download_data, scrap_data
-
+from src.Backend import download_data, scrap_data, translate_data, countries_code
 root = tk.Tk()
 
 root.title("GeoNarratives - GDELT Data Downloader")
 root.geometry("400x400")
 
-
 first_country_label = tk.Label(root, text="First Country Code:")
 first_country_label.place(x=10, y=20)
 
-first_country_entry = tk.Entry(root)
-first_country_entry.place(x=150, y=20)
+first_country_var = tk.StringVar()
+first_country_var.set(countries_code[0])
 
+first_country_menu = ttk.OptionMenu(root, first_country_var, *countries_code)
+first_country_menu.place(x=150, y=20)
 
 second_country_label = tk.Label(root, text="Second Country Code:")
 second_country_label.place(x=10, y=50)
 
-second_country_entry = tk.Entry(root)
-second_country_entry.place(x=150, y=50)
+second_country_var = tk.StringVar()
+second_country_var.set(countries_code[1])
+
+second_country_menu = ttk.OptionMenu(root, second_country_var, *countries_code)
+second_country_menu.place(x=150, y=50)
 
 start_date_label = tk.Label(root, text="Start Date:")
 start_date_label.place(x=10, y=80)
@@ -50,10 +54,13 @@ path_entry.insert(0, "outputs/data.csv")
 
 output_path = path_entry.get()
 
-download_data_button = tk.Button(root, text="Download Data", command=lambda: download_data(first_country_entry.get().upper(), second_country_entry.get().upper(), start_date_entry.get(), end_date_entry.get(), limit_entry.get(), output_path))
+download_data_button = tk.Button(root, text="Download Data", command=lambda: download_data(first_country_var.get().upper(), second_country_var.get().upper(), start_date_entry.get(), end_date_entry.get(), limit_entry.get(), output_path))
 download_data_button.place(x=150, y=210)
 
 scrapt_data_button = tk.Button(root, text="Scrap Data", command=lambda: scrap_data(output_path, root))
 scrapt_data_button.place(x=150, y=240)
+
+translate_data_button = tk.Button(root, text="Translate Data to English", command=lambda: translate_data(output_path, root))
+translate_data_button.place(x=150, y=270)
 
 root.mainloop()

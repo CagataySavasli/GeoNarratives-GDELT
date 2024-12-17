@@ -16,11 +16,11 @@ class WebScrapper :
 
         self.root = root
 
-        self.progress_label = tk.Label(root, text="Data Scraping Progress:")
-        self.progress_label.place(x=10, y=280)
+        self.progress_label = tk.Label(root, text="Data Scraping Progress:    ")
+        self.progress_label.place(x=10, y=310)
 
         self.progress_bar = ttk.Progressbar(root, orient="horizontal", length=300, mode="determinate")
-        self.progress_bar.place(x=10, y=310)
+        self.progress_bar.place(x=10, y=340)
 
         self.idx = 0
 
@@ -28,7 +28,7 @@ class WebScrapper :
         # Oranı hesapla ve progress bar'ı güncelle
         progress = (current / total) * 100
         self.progress_bar["value"] = progress
-        self.progress_label["text"] = f"Data Scraping Progress: {current} / {total}"
+        self.progress_label["text"] = f"Data Scraping Progress: {current} / {total}    "
         self.root.update()
 
 
