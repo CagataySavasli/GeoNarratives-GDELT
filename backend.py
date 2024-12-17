@@ -5,7 +5,6 @@ bigQueryConnector = BigQueryConnector()
 queryGenerator = QueryGenerotor()
 
 def download_data(contry_1, contry_2, start_date, end_date, limit):
-    limit = 1000 if limit == "" else int(limit)
     query = queryGenerator.generate_query(contry_1, contry_2, start_date, end_date, limit)
     results = bigQueryConnector.get_data(query)
 
