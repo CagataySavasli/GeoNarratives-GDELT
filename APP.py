@@ -1,13 +1,10 @@
 import tkinter as tk
-from src.Backend import download_data
 from tkcalendar import DateEntry
+from src.Backend import download_data, scrap_data
 
-
-# Ana pencereyi oluşturma
 root = tk.Tk()
 
-# Pencere başlığı
-root.title("İlk Tkinter Uygulamam")
+root.title("GeoNarratives - GDELT Data Downloader")
 root.geometry("400x400")
 
 
@@ -44,8 +41,19 @@ limit_entry = tk.Entry(root)
 limit_entry.place(x=150, y=160)
 limit_entry.insert(0, "1000")
 
-download_data_button = tk.Button(root, text="Download Data", command=lambda: download_data(first_country_entry.get().upper(), second_country_entry.get().upper(), start_date_entry.get(), end_date_entry.get(), limit_entry.get()))
-download_data_button.place(x=150, y=200)
+path_label = tk.Label(root, text="Output Path:")
+path_label.place(x=10, y=180)
 
-# Pencereyi ekranda gösterme
+path_entry = tk.Entry(root)
+path_entry.place(x=150, y=180)
+path_entry.insert(0, "outputs/data.csv")
+
+output_path = path_entry.get()
+
+download_data_button = tk.Button(root, text="Download Data", command=lambda: download_data(first_country_entry.get().upper(), second_country_entry.get().upper(), start_date_entry.get(), end_date_entry.get(), limit_entry.get(), output_path))
+download_data_button.place(x=150, y=210)
+
+scrapt_data_button = tk.Button(root, text="Scrap Data", command=lambda: scrap_data(output_path, root))
+scrapt_data_button.place(x=150, y=240)
+
 root.mainloop()
