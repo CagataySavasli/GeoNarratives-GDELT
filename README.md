@@ -26,8 +26,8 @@ The project uses **Python 3.12** and **Poetry** for dependency management.
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
-   cd geonarratives
+   git clone https://github.com/CagataySavasli/GeoNarratives-GDELT.git
+   cd GeoNarratives-GDELT
     ```
 2. Install dependencies using Poetry:
    ```bash
@@ -74,7 +74,7 @@ The resulting data will be saved as a CSV file in the specified output path:
     ```
    
 2. Select the following options in the interface:
-   - First Country Code: `USA`
+   - First Country Code: `UKR`
    - Second Country Code: `RUS`
    - Start Date: `2024-01-01`
    - End Date: `2024-01-07`
