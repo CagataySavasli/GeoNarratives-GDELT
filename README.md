@@ -34,6 +34,24 @@ The project uses **Python 3.12** and **Poetry** for dependency management.
    poetry install 
    ```
 
+3. Create a Service Account Key:
+
+   1. Go to **Google Cloud Console**:  
+      **IAM & Admin > Service Accounts**
+
+   2. Create a **service account** or use an existing one.
+
+   3. Navigate to the **Keys** tab and click **"Create Key"**.
+
+   4. Select the **JSON** option and download the file.
+
+   5. Move the downloaded JSON file to the following path:  
+      `src/services_account/`
+
+   6. Update the `service_account_path` variable in the `src/BigQueryConnector.py` file to reflect the new path:  
+      ```python
+      service_account_path = "src/services_account/<your-key-file>.json"
+
 ---
 
 ## Usage
@@ -43,17 +61,17 @@ The project uses **Python 3.12** and **Poetry** for dependency management.
    ```
 2. The graphical interface will open. Follow these steps:
 
-- First Country Code: Select the code of the first country.
-- Second Country Code: Select the code of the second country.
-- Start Date / End Date: Choose the desired date range.
-- Limit: Enter the maximum number of news articles to download.
-- Output Path: Specify the path where the output CSV file will be saved.
+   - First Country Code: Select the code of the first country.
+   - Second Country Code: Select the code of the second country.
+   - Start Date / End Date: Choose the desired date range.
+   - Limit: Enter the maximum number of news articles to download.
+   - Output Path: Specify the path where the output CSV file will be saved.
 
 3. Use the buttons to perform specific actions:
 
-- Download Data: Download GDELT data based on the provided inputs.
-- Scrap Data: Automate scraping of news articles.
-- Translate Data to English: Translate non-English news articles into English.
+   - Download Data: Download GDELT data based on the provided inputs.
+   - Scrap Data: Automate scraping of news articles.
+   - Translate Data to English: Translate non-English news articles into English.
 
 ---
 
