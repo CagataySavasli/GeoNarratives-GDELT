@@ -36,8 +36,7 @@ The project uses **Python 3.12** and **Poetry** for dependency management.
 
 3. Create a Service Account Key:
 
-   1. Go to **Google Cloud Console**:  
-      **IAM & Admin > Service Accounts**
+   1. Go to **Google Cloud Console**: **IAM & Admin > Service Accounts**
 
    2. Create a **service account** or use an existing one.
 
@@ -45,14 +44,14 @@ The project uses **Python 3.12** and **Poetry** for dependency management.
 
    4. Select the **JSON** option and download the file.
 
-   5. Move the downloaded JSON file to the following path:  
-      `src/services_account/`
+   5. Move the downloaded JSON file to the following path: `src/services_account/`
 
    6. Update the `service_account_path` variable in the `src/BigQueryConnector.py` file to reflect the new path:  
-      ```python
-      service_account_path = "src/services_account/<your-key-file>.json"
-
----
+   ```python
+   service_account_path = "src/services_account/<your-key-file>.json"
+    ```
+   
+   ---
 
 ## Usage
 1. Run the application:
