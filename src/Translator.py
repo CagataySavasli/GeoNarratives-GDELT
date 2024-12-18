@@ -75,7 +75,6 @@ class Translator:
         text = text.replace("\n", " ")
         text = re.sub(r'\s+', ' ', text)  # Replace multiple spaces with a single space
 
-        time.sleep(2)
         self.update_progress(self.idx, len(self.data), "Data Cleaning")
         return text.strip()
 
@@ -104,7 +103,9 @@ class Translator:
                 check = True
                 while check:
                     try:
-                        translated_text += (". " + self.google_translator.translate(batch))
+                        tmp_text = self.google_translator.translate(batch)
+                        if len(translated_text) == 0: translated_text += tmp_text
+                        else: translated_text += (". " + tmp_text)
                         check = False
                     except Exception as e:
                         self.google_translator = GoogleTranslator(source='auto', target='en')
