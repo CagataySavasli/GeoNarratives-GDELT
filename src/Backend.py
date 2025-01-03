@@ -2,6 +2,7 @@ from src.BigQueryConnector import BigQueryConnector
 from src.QueryGenerotor import QueryGenerotor
 from src.WepScrapper import WebScrapper
 from src.Translator import Translator
+import tkinter as tk
 
 bigQueryConnector = BigQueryConnector()
 queryGenerator = QueryGenerotor()
@@ -18,7 +19,12 @@ countries_code = [country + " : " + countries_code2name[country] if country in c
                   country in countries_code]
 
 
-def download_data(contry_1, contry_2, start_date, end_date, limit, path):
+def download_data(contry_1, contry_2, start_date, end_date, limit, path, root):
+    root = root
+
+    progress_label = tk.Label(root, text="Data Loaded !")
+    progress_label.place(x=10, y=340)
+
     contry_1 = contry_1.split(" : ")[0]
     contry_2 = contry_2.split(" : ")[0]
     query = queryGenerator.generate_query(contry_1, contry_2, start_date, end_date, limit)
@@ -45,6 +51,6 @@ def translate_data(path, root):
 
 
 def all_in_one(contry_1, contry_2, start_date, end_date, limit, path, root):
-    download_data(contry_1, contry_2, start_date, end_date, limit, path)
+    download_data(contry_1, contry_2, start_date, end_date, limit, path, root)
     scrap_data(path, root)
     translate_data(path, root)

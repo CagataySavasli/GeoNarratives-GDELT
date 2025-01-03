@@ -54,7 +54,7 @@ path_entry.insert(0, "outputs/data.csv")
 
 output_path = path_entry.get()
 
-download_data_button = tk.Button(root, text="Download Data", command=lambda: download_data(first_country_var.get().upper(), second_country_var.get().upper(), start_date_entry.get(), end_date_entry.get(), limit_entry.get(), output_path))
+download_data_button = tk.Button(root, text="Download Data", command=lambda: download_data(first_country_var.get().upper(), second_country_var.get().upper(), start_date_entry.get(), end_date_entry.get(), limit_entry.get(), output_path, root))
 download_data_button.place(x=150, y=210)
 
 scrapt_data_button = tk.Button(root, text="Scrap Data", command=lambda: scrap_data(output_path, root))
