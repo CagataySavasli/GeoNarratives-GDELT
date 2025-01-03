@@ -17,10 +17,10 @@ class Translator:
         self.root = root
 
         self.progress_label = tk.Label(root, text="Data Scraping Progress:    ")
-        self.progress_label.place(x=10, y=310)
+        self.progress_label.place(x=10, y=340)
 
         self.progress_bar = ttk.Progressbar(root, orient="horizontal", length=300, mode="determinate")
-        self.progress_bar.place(x=10, y=340)
+        self.progress_bar.place(x=10, y=370)
 
         self.idx = 0
 
