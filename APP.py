@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 from tkcalendar import DateEntry
-from src.Backend import download_data, scrap_data, translate_data, countries_code
+from src.Backend import download_data, scrap_data, translate_data, countries_code, all_in_one
 root = tk.Tk()
 
 root.title("GeoNarratives - GDELT Data Downloader")
@@ -62,5 +62,8 @@ scrapt_data_button.place(x=150, y=240)
 
 translate_data_button = tk.Button(root, text="Translate Data to English", command=lambda: translate_data(output_path, root))
 translate_data_button.place(x=150, y=270)
+
+translate_data_button = tk.Button(root, text="All in One", command=lambda: all_in_one(first_country_var.get().upper(), second_country_var.get().upper(), start_date_entry.get(), end_date_entry.get(), limit_entry.get(), output_path, root))
+translate_data_button.place(x=150, y=300)
 
 root.mainloop()
