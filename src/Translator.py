@@ -23,6 +23,10 @@ class Translator:
         self.progress_bar.place(x=10, y=370)
 
         self.idx = 0
+        file = open("src/not_scrapping_indicators.txt", "r")
+        self.mask = file.readlines()
+        file.close()
+        self.mask = [x.strip() for x in self.mask]
 
     def update_progress(self, current, total, text):
         # Oranı hesapla ve progress bar'ı güncelle
@@ -118,7 +122,6 @@ class Translator:
 
 
 
-
     def get_translate(self):
         self.data = self.data.dropna(subset=['source_text'], axis=0, how='any')
         self.data.reset_index(drop=True, inplace=True)
@@ -130,5 +133,7 @@ class Translator:
         self.idx = 0
         print("\nTranslate Text")
         self.data['text_en'] = self.data['source_text'].apply(self.translate_to_english)
+
+        self.data = self.data[~self.data['text_en'].str.contains('|'.join(self.mask), case=False, na=False)]
 
         self.data.to_csv(self.path, index=False)
